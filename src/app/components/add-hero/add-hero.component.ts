@@ -7,10 +7,10 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from 'src/app/models/hero.model';
-import { HeroesService } from 'src/app/services/heroes.service';
-import { LoadingService } from 'src/app/services/loading.service';
+import { HeroesService } from 'src/app/services/heroes/heroes.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-add-hero',
@@ -31,7 +31,8 @@ export class AddHeroComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private heroesService: HeroesService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -83,7 +84,9 @@ export class AddHeroComponent implements OnInit {
         return null;
       }
 
-      const isNameUsed = !this.heroes.find(hero => hero.name === control.value);
+      const isNameUsed = !this.heroes.find(
+        hero => hero.name === control.value && hero._id !== this.id
+      );
 
       return !isNameUsed ? { nameValidErr: true } : null;
     };
@@ -117,6 +120,7 @@ export class AddHeroComponent implements OnInit {
         .subscribe({
           next: res => {
             this.submitted = true;
+            this.router.navigate(['/']);
           },
           error: e => {
             this.submitted = false;

@@ -1,0 +1,16 @@
+<div class="input-group mb-3">
+  <div class="input-group-prepend">
+    <span
+      (click)="onSearch()"
+      class="input-group-text cursor-pointer"
+      id="inputGroup-sizing-default"
+      >Search</span
+    >
+  </div>
+  <input
+    type="text"
+    [(ngModel)]="searchQuery"
+    class="form-control"
+    aria-label="Sizing example input"
+    aria-describedby="inputGroup-sizing-default" />
+</div>

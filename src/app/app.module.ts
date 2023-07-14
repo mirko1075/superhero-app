@@ -17,6 +17,8 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { TruncatePipe } from './pipes/truncate.pipe';
 import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { LoadingComponent } from './components/loading/loading.component';
+import { UppercaseDirective } from './directives/uppercase.directive';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,8 @@ import { LoadingComponent } from './components/loading/loading.component';
     ConfirmationModalComponent,
     TruncatePipe,
     LoadingComponent,
+    UppercaseDirective,
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

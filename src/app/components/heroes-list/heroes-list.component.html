@@ -1,4 +1,5 @@
 <div class="container">
+  <app-search (search)="onSearch($event)"></app-search>
   <div class="row">
     <app-loading *ngIf="isLoading"></app-loading>
     <div class="col-sm-6" *ngFor="let hero of heroes">

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from 'src/app/models/hero.model';
-import { HeroesService } from 'src/app/services/heroes.service';
-import { LoadingService } from 'src/app/services/loading.service';
+import { HeroesService } from 'src/app/services/heroes/heroes.service';
+import { LoadingService } from 'src/app/services/loading/loading.service';
 
 @Component({
   selector: 'app-hero-details',

@@ -11,7 +11,8 @@
             id="name"
             required
             name="name"
-            formControlName="name" />
+            formControlName="name"
+            appUppercase />
           <div
             *ngIf="
               addHeroForm.get('name')?.invalid &&
@@ -96,12 +97,6 @@
           </button>
         </div>
       </div>
-    </div>
-    <div *ngIf="submitted">
-      <h4>Hero was submitted successfully!</h4>
-    </div>
-    <div *ngIf="error" class="badge badge-danger">
-      <h4>Hero was not submitted successfully!</h4>
     </div>
   </div>
 </div>

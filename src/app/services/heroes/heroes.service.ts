@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, Observable } from 'rxjs';
-import { Hero, PowerStats } from '../models/hero.model';
+import { Hero, PowerStats } from '../../models/hero.model';
 @Injectable({
   providedIn: 'root',
 })
@@ -24,7 +24,7 @@ export class HeroesService {
   }
 
   public create(data: {
-    id: string;
+    _id: string;
     name: string;
     imageUrl: string;
     description: string;
@@ -37,11 +37,11 @@ export class HeroesService {
   public update(
     id: string,
     data: {
-      id: string;
+      _id: string;
       name: string;
       description: string;
       imageUrl: string;
-      powerstats: PowerStats;
+      powerstats?: PowerStats;
     }
   ): Observable<any> {
     return this.http

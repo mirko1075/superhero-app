@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Hero } from 'src/app/models/hero.model';
-import { HeroesService } from 'src/app/services/heroes.service';
-import { LoadingService } from '../../services/loading.service';
+import { HeroesService } from 'src/app/services/heroes/heroes.service';
+import { LoadingService } from '../../services/loading/loading.service';
 
 @Component({
   selector: 'app-heroes-list',
@@ -56,5 +56,9 @@ export class HeroesListComponent implements OnInit {
       },
       error: error => console.error(error),
     });
+  }
+
+  public onSearch(text: string): void {
+    console.log('text', text);
   }
 }
