@@ -7,6 +7,8 @@ import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
+import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -21,8 +23,11 @@ import { HeroCardComponent } from './components/hero-card/hero-card.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [HttpClient],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
