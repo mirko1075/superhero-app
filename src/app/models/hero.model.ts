@@ -5,7 +5,13 @@ export class Hero {
   public imageUrl?: string;
   public powerstats?: PowerStats;
 
-  constructor(id: string, name: string, description?: string, imageUrl?: string, powerstats? :PowerStats ) {
+  constructor(
+    id: string,
+    name: string,
+    description?: string,
+    imageUrl?: string,
+    powerstats?: PowerStats
+  ) {
     this._id = id;
     this.name = name;
     this.name = name;
@@ -15,7 +21,7 @@ export class Hero {
   }
 }
 
-export interface PowerStats{
+export interface PowerStats {
   intelligence: string;
   strength: string;
   speed: string;

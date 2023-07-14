@@ -13,7 +13,7 @@ export class HeroesListComponent implements OnInit {
   public heroes: Hero[] = new Array<Hero>();
   public currentHero: Hero = new Hero('', '');
   public currentIndex = -1;
-  public isLoading: boolean = true;
+  public isLoading = true;
 
   constructor(
     private heroesService: HeroesService,

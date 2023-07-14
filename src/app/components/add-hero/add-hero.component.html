@@ -1,6 +1,7 @@
 <div [formGroup]="addHeroForm">
-  <div class="submit-form">
-    <h4>{{hero?._id? 'Edit' : 'Add new'}} Hero</h4>
+  <app-loading *ngIf="isLoading"></app-loading>
+  <div *ngIf="!isLoading" class="submit-form">
+    <h4>{{ hero?._id ? 'Edit' : 'Add new' }} Hero</h4>
     <div *ngIf="!submitted">
       <div class="form-group">
         <div class="form-group">
@@ -10,16 +11,14 @@
             id="name"
             required
             name="name"
-            formControlName="name"
-          />
+            formControlName="name" />
           <div
             *ngIf="
               addHeroForm.get('name')?.invalid &&
               (addHeroForm.get('name')?.dirty ||
                 addHeroForm.get('name')?.touched)
             "
-            class="alert alert-danger"
-          >
+            class="alert alert-danger">
             <div *ngIf="addHeroForm.get('name')?.errors?.['required']">
               Name is required.
             </div>
@@ -34,7 +33,9 @@
             </div>
           </div>
           <label for="description">Description</label>
-          <textarea class="form-control"             id="description"
+          <textarea
+            class="form-control"
+            id="description"
             name="description"
             formControlName="description"
             rows="3">
@@ -44,65 +45,56 @@
             class="form-control"
             id="imageUrl"
             name="imageUrl"
-            formControlName="imageUrl"
-          />
+            formControlName="imageUrl" />
           <div formGroupName="powerstats">
-              <h6>Power stats</h6>
-              <label for="intelligence">Intelligence</label>
-              <input
-                class="form-control"
-                id="intelligence"
-                name="intelligence"
-                formControlName="intelligence"
-              />
-              <label for="strength">Strength</label>
-              <input
-                class="form-control"
-                id="strength"
-                name="strength"
-                formControlName="strength"
-              />
-              <label for="speed">Speed</label>
-              <input
-                class="form-control"
-                id="speed"
-                name="speed"
-                formControlName="speed"
-              />
-              <label for="durability">Durability</label>
-              <input
-                class="form-control"
-                id="durability"
-                name="durability"
-                formControlName="durability"
-              />
-              <label for="power">Power</label>
-              <input
-                class="form-control"
-                id="power"
-                name="power"
-                formControlName="power"
-              />
-              <label for="combat">Combat</label>
-              <input
-                class="form-control"
-                id="combat"
-                name="combat"
-                formControlName="combat"
-              />
+            <h6>Power stats</h6>
+            <label for="intelligence">Intelligence</label>
+            <input
+              class="form-control"
+              id="intelligence"
+              name="intelligence"
+              formControlName="intelligence" />
+            <label for="strength">Strength</label>
+            <input
+              class="form-control"
+              id="strength"
+              name="strength"
+              formControlName="strength" />
+            <label for="speed">Speed</label>
+            <input
+              class="form-control"
+              id="speed"
+              name="speed"
+              formControlName="speed" />
+            <label for="durability">Durability</label>
+            <input
+              class="form-control"
+              id="durability"
+              name="durability"
+              formControlName="durability" />
+            <label for="power">Power</label>
+            <input
+              class="form-control"
+              id="power"
+              name="power"
+              formControlName="power" />
+            <label for="combat">Combat</label>
+            <input
+              class="form-control"
+              id="combat"
+              name="combat"
+              formControlName="combat" />
           </div>
-
         </div>
         <div>
-            <button
-                [disabled]="!addHeroForm.valid"
-                (click)="saveHero()"
-                class="btn btn-success"
-                appOffline>
-                Submit
-            </button>
+          <button
+            [disabled]="!addHeroForm.valid"
+            (click)="saveHero()"
+            class="btn btn-success"
+            appOffline>
+            Submit
+          </button>
         </div>
-
       </div>
     </div>
     <div *ngIf="submitted">

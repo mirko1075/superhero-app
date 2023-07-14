@@ -1,7 +1,7 @@
-
 <div class="container">
-  <div class="card">
-    <img [src]="hero?.imageUrl" class="img-fluid" alt="{{hero?.name}}">
+  <app-loading *ngIf="isLoading"></app-loading>
+  <div *ngIf="!isLoading" class="card">
+    <img [src]="hero?.imageUrl" class="img-fluid" alt="{{ hero?.name }}" />
     <div class="card-body">
       <h5 class="card-title">{{ hero?.name }}</h5>
       <p class="card-text">{{ hero?.description }}</p>
@@ -14,6 +14,8 @@
         <li>Combat: {{ hero?.powerstats?.combat }}</li>
       </ul>
     </div>
-    <button type="button" class="btn btn-info" (click)="navigateBack()">Back</button>
+    <button type="button" class="btn btn-info" (click)="navigateBack()">
+      Back
+    </button>
   </div>
 </div>

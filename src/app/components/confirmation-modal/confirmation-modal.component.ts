@@ -4,10 +4,9 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-confirmation-modal',
   templateUrl: './confirmation-modal.component.html',
-  styleUrls: ['./confirmation-modal.component.scss']
+  styleUrls: ['./confirmation-modal.component.scss'],
 })
 export class ConfirmationModalComponent {
-
   constructor(public activeModal: NgbActiveModal) {}
 
   public onClickDismiss(): void {

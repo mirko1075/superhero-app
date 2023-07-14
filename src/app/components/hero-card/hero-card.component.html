@@ -1,12 +1,31 @@
-<div class="card" style="width: 15rem; margin:5px">
-  <img  class="img-thumbnail cursor-pointer" src="{{ item?.imageUrl }}" alt="{{ item?.name }}" (click)="navigateToRoute('/api/heroes/' + item?._id)" />
+<div class="card" style="width: 15rem; margin: 5px">
+  <img
+    class="img-thumbnail cursor-pointer"
+    src="{{ item?.imageUrl }}"
+    alt="{{ item?.name }}"
+    (click)="navigateToRoute('/api/heroes/' + item?._id)" />
   <div class="card-body">
     <h5 class="card-title">{{ item?.name }}</h5>
     <p class="card-text">{{ item?.description || '' | truncate }}</p>
   </div>
   <div class="buttons-container">
-      <button type="button" (click)="navigateToRoute('/api/heroes/' + item?._id)" class="btn btn-secondary">Detail</button>
-      <button type="button" (click)="navigateToRoute('/api/heroes/add/' + item?._id)" class="btn btn-primary">Edit</button>
-      <button type="button" (click)="openConfirmation(item?._id)" class="btn btn-danger">Delete</button>
+    <button
+      type="button"
+      (click)="navigateToRoute('/api/heroes/' + item?._id)"
+      class="btn btn-secondary">
+      Detail
+    </button>
+    <button
+      type="button"
+      (click)="navigateToRoute('/api/heroes/add/' + item?._id)"
+      class="btn btn-primary">
+      Edit
+    </button>
+    <button
+      type="button"
+      (click)="openConfirmation(item?._id)"
+      class="btn btn-danger">
+      Delete
+    </button>
   </div>
 </div>

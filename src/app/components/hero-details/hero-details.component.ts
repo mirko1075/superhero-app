@@ -7,38 +7,42 @@ import { LoadingService } from 'src/app/services/loading.service';
 @Component({
   selector: 'app-hero-details',
   templateUrl: './hero-details.component.html',
-  styleUrls: ['./hero-details.component.scss']
+  styleUrls: ['./hero-details.component.scss'],
 })
 export class HeroDetailsComponent {
   private id: any;
   public hero: Hero | null = null;
-  public isLoading: boolean = false;
+  public isLoading = false;
 
-  constructor(private route: ActivatedRoute, private router: Router, private heroesService: HeroesService, private loadingService: LoadingService) { }
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private heroesService: HeroesService,
+    private loadingService: LoadingService
+  ) {}
 
   ngOnInit() {
     this.loadingService.loading$.subscribe((isLoading: boolean) => {
       this.isLoading = isLoading;
     });
     this.route.params.subscribe(params => {
-     this.id = params['id'];
-      if (this.id){
+      this.id = params['id'];
+      if (this.id) {
         this.retrieveHero(this.id);
       }
     });
   }
 
-
-  private retrieveHero(heroId:string): void {
+  private retrieveHero(heroId: string): void {
     this.heroesService.get(heroId).subscribe({
-      next: (data) => {
+      next: data => {
         this.hero = data;
       },
-      error: (e) => console.error(e),
+      error: e => console.error(e),
     });
   }
 
-  public  navigateBack():void{
-    this.router.navigate(["/"])
+  public navigateBack(): void {
+    this.router.navigate(['/']);
   }
 }
