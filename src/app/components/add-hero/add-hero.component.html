@@ -1,1 +1,69 @@
-<p>add-hero works!</p>
+<div [formGroup]="addHeroForm">
+  <div class="submit-form">
+    <h4>Add New Hero</h4>
+    <div *ngIf="!submitted">
+      <div class="form-group">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input
+            class="form-control"
+            id="name"
+            required
+            name="name"
+            formControlName="name"
+          />
+          <div
+            *ngIf="
+              addHeroForm.get('name')?.invalid &&
+              (addHeroForm.get('name')?.dirty ||
+                addHeroForm.get('name')?.touched)
+            "
+            class="alert alert-danger"
+          >
+            <div *ngIf="addHeroForm.get('name')?.errors?.['required']">
+              Name is required.
+            </div>
+            <div *ngIf="addHeroForm.get('name')?.errors?.['minlength']">
+              id must be at least 8 characters long.
+            </div>
+            <div *ngIf="addHeroForm.get('name')?.errors?.['maxlength']">
+              Name must be not more than 50 characters long.
+            </div>
+            <div *ngIf="addHeroForm.get('name')?.errors?.['nameValidErr']">
+              name is already taken
+            </div>
+          </div>
+          <label for="description">Description</label>
+          <input
+            class="form-control"
+            id="description"
+            name="description"
+            formControlName="description"
+          />
+          <label for="imageUrl">Image URL</label>
+          <input
+            class="form-control"
+            id="imageUrl"
+            name="imageUrl"
+            formControlName="imageUrl"
+          />
+        </div>
+        <button
+          [disabled]="!addHeroForm.valid"
+          (click)="saveHero()"
+          class="btn btn-success"
+          appOffline
+        >
+          Submit
+        </button>
+      </div>
+    </div>
+    <div *ngIf="submitted">
+      <h4>Hero was submitted successfully!</h4>
+      <button class="btn btn-success" (click)="newHero()">Add</button>
+    </div>
+    <div *ngIf="error" class="badge badge-danger">
+      <h4>Hero was not submitted successfully!</h4>
+    </div>
+  </div>
+</div>
