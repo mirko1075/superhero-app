@@ -12,4 +12,9 @@ export class SearchComponent {
   onSearch(): void {
     this.search.emit(this.searchQuery);
   }
+
+  onClear(): void {
+    this.searchQuery = '';
+    this.search.emit(this.searchQuery);
+  }
 }

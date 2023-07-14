@@ -1,16 +1,20 @@
-<div class="input-group mb-3">
-  <div class="input-group-prepend">
-    <span
-      (click)="onSearch()"
-      class="input-group-text cursor-pointer"
-      id="inputGroup-sizing-default"
-      >Search</span
-    >
-  </div>
+<div class="input-group">
   <input
-    type="text"
     [(ngModel)]="searchQuery"
+    type="text"
     class="form-control"
-    aria-label="Sizing example input"
-    aria-describedby="inputGroup-sizing-default" />
+    placeholder="Search text"
+    aria-label="Search text in Name and Description"
+    aria-describedby="button-addon4" />
+  <div class="input-group-append" id="button-addon4">
+    <button
+      class="btn btn-outline-secondary"
+      (click)="onSearch()"
+      type="button">
+      Search
+    </button>
+    <button class="btn btn-outline-secondary" (click)="onClear()" type="button">
+      Clear
+    </button>
+  </div>
 </div>

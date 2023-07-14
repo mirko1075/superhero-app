@@ -15,8 +15,18 @@ export class HeroesService {
 
   constructor(private http: HttpClient) {}
 
-  public getAll(): Observable<Hero[]> {
-    return this.http.get<Hero[]>(this.baseUrl);
+  public getAll(searchString?: any): Observable<Hero[]> {
+    let options = {};
+    if (searchString) {
+      let filter = {
+        $or: [
+          { name: { $regex: searchString, $options: 'i' } },
+          { description: { $regex: searchString, $options: 'i' } },
+        ],
+      };
+      options = { params: { filter: JSON.stringify(filter) } };
+    }
+    return this.http.get<Hero[]>(this.baseUrl, options);
   }
 
   public get(id: string): Observable<Hero> {

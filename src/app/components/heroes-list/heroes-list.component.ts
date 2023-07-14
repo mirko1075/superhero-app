@@ -27,8 +27,8 @@ export class HeroesListComponent implements OnInit {
     this.retrieveHeroes();
   }
 
-  private retrieveHeroes(): void {
-    this.heroesService.getAll().subscribe({
+  private retrieveHeroes(options?: string): void {
+    this.heroesService.getAll(options).subscribe({
       next: data => {
         this.heroes = data;
       },
@@ -58,7 +58,7 @@ export class HeroesListComponent implements OnInit {
     });
   }
 
-  public onSearch(text: string): void {
-    console.log('text', text);
+  public onSearch(searchString: string): void {
+    this.retrieveHeroes(searchString);
   }
 }
