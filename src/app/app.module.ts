@@ -14,7 +14,8 @@ import { HeroDetailsComponent } from './components/hero-details/hero-details.com
     HeroDetailsComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
