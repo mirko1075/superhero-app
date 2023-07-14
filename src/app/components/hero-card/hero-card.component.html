@@ -1,7 +1,12 @@
-<div class="card">
-  <img class="card-img-top" src="{{ item?.imageUrl }}" alt="{{ item?.name }}" />
+<div class="card" style="width: 15rem; margin:5px">
+  <img class="card-img-top img-fluid " src="{{ item?.imageUrl }}" alt="{{ item?.name }}" />
   <div class="card-body">
     <h5 class="card-title">{{ item?.name }}</h5>
     <p class="card-text">{{ item?.description }}</p>
   </div>
+  <div class="buttons-container">
+      <button type="button" (click)="navigateToRoute('/api/heroes/add/' + item?._id)" class="btn btn-primary">Edit</button>
+      <button type="button" class="btn btn-danger">Delete</button>
+  </div>
+
 </div>

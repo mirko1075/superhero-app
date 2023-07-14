@@ -28,7 +28,7 @@ export class HeroesListComponent implements OnInit {
   }
 
   public setActiveHero(hero: Hero, index: number): void {
-    if (this.currentHero.id === "") {
+    if (this.currentHero._id === "") {
       this.currentHero = hero;
       this.currentIndex = index;
     } else {

@@ -7,7 +7,7 @@ const routes: Routes = [
   { path: "", redirectTo: "api/heroes", pathMatch: "full" },
   { path: "api/heroes", component: HeroesListComponent },
   { path: "api/heroes/add", component: AddHeroComponent },
-  { path: "api/heroes/:id", component: HeroDetailsComponent },
+  { path: "api/heroes/add/:id", component: AddHeroComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
