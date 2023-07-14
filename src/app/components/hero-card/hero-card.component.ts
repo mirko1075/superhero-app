@@ -7,5 +7,5 @@ import { Hero } from 'src/app/models/hero.model';
   styleUrls: ['./hero-card.component.scss']
 })
 export class HeroCardComponent {
-  @Input() item: Hero | null= null
+@Input() item: Hero | null= null
 }

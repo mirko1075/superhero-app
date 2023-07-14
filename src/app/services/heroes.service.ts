@@ -1,6 +1,6 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, of } from "rxjs";
+import { catchError, Observable } from "rxjs";
 import { Hero } from "../models/hero.model";
 @Injectable({
   providedIn: "root",
@@ -19,26 +19,26 @@ export class HeroesService {
     return this.http.get<Hero[]>(this.baseUrl);
   }
 
-  public get(id: String): Observable<Hero> {
+  public get(id: string): Observable<Hero> {
     return this.http.get<Hero>(`${this.baseUrl}/${id}`);
   }
 
-  public create(data: { Id: String; Name: String }): Observable<any> {
+  public create(data: { Id: string; Name: string }): Observable<any> {
     return this.http
       .post(this.baseUrl, data, this.httpOptions)
       .pipe(catchError(this.handleError<Hero>(`createHero`)));
   }
 
   public update(
-    id: String,
-    data: { Id: String; Name: String }
+    id: string,
+    data: { Id: string; Name: string }
   ): Observable<any> {
     return this.http
       .put(`${this.baseUrl}/${id}`, data, this.httpOptions)
       .pipe(catchError(this.handleError<Hero>(`updateHero`)));
   }
 
-  public delete(id: String): Observable<any> {
+  public delete(id: string): Observable<any> {
     return this.http
       .delete(`${this.baseUrl}/${id}`)
       .pipe(catchError(this.handleError<Hero>(`deleteHero`)));
