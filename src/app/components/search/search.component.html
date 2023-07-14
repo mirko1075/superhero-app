@@ -1,5 +1,6 @@
 <div class="input-group">
   <input
+    (keydown.enter)="onSearch()"
     [(ngModel)]="searchQuery"
     type="text"
     class="form-control"
