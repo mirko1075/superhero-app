@@ -1,1 +1,7 @@
-<p>heroes-list works!</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6" *ngFor="let hero of heroes">
+      <app-hero-card [item]="hero"></app-hero-card>
+    </div>
+  </div>
+</div>

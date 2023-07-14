@@ -4,10 +4,10 @@ import { HeroesListComponent } from "./components/heroes-list/heroes-list.compon
 import { AddHeroComponent } from "./components/add-hero/add-hero.component";
 import { HeroDetailsComponent } from "./components/hero-details/hero-details.component";
 const routes: Routes = [
-  { path: "", redirectTo: "heroes", pathMatch: "full" },
-  { path: "heroes", component: HeroesListComponent },
-  { path: "heroes/:id", component: HeroDetailsComponent },
-  { path: "add", component: AddHeroComponent },
+  { path: "", redirectTo: "api/heroes", pathMatch: "full" },
+  { path: "api/heroes", component: HeroesListComponent },
+  { path: "api/heroes/add", component: AddHeroComponent },
+  { path: "api/heroes/:id", component: HeroDetailsComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

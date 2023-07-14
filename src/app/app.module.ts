@@ -6,6 +6,8 @@ import { HeroesListComponent } from './components/heroes-list/heroes-list.compon
 import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { HeroCardComponent } from './components/hero-card/hero-card.component';
+
 
 @NgModule({
   declarations: [
@@ -13,11 +15,12 @@ import { NavbarComponent } from './components/navbar/navbar.component';
     HeroesListComponent,
     AddHeroComponent,
     HeroDetailsComponent,
-    NavbarComponent
+    NavbarComponent,
+    HeroCardComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
