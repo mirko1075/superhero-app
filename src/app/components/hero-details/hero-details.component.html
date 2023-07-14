@@ -1,1 +1,19 @@
-<p>hero-details works!</p>
+
+<div class="container">
+  <div class="card">
+    <img [src]="hero?.imageUrl" class="img-fluid" alt="{{hero?.name}}">
+    <div class="card-body">
+      <h5 class="card-title">{{ hero?.name }}</h5>
+      <p class="card-text">{{ hero?.description }}</p>
+      <ul>
+        <li>Intelligence: {{ hero?.powerstats?.intelligence }}</li>
+        <li>Strength: {{ hero?.powerstats?.strength }}</li>
+        <li>Speed: {{ hero?.powerstats?.speed }}</li>
+        <li>Durability: {{ hero?.powerstats?.durability }}</li>
+        <li>Power: {{ hero?.powerstats?.power }}</li>
+        <li>Combat: {{ hero?.powerstats?.combat }}</li>
+      </ul>
+    </div>
+    <button type="button" class="btn btn-info" (click)="navigateBack()">Back</button>
+  </div>
+</div>

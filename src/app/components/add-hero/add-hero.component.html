@@ -1,10 +1,10 @@
 <div [formGroup]="addHeroForm">
   <div class="submit-form">
-    <h4>Add New Hero</h4>
+    <h4>{{hero?._id? 'Edit' : 'Add new'}} Hero</h4>
     <div *ngIf="!submitted">
       <div class="form-group">
         <div class="form-group">
-          <label for="name">Name</label>
+          <label for="name">Name <span lass="danger">*</span></label>
           <input
             class="form-control"
             id="name"
@@ -34,12 +34,11 @@
             </div>
           </div>
           <label for="description">Description</label>
-          <input
-            class="form-control"
-            id="description"
+          <textarea class="form-control"             id="description"
             name="description"
             formControlName="description"
-          />
+            rows="3">
+          </textarea>
           <label for="imageUrl">Image URL</label>
           <input
             class="form-control"
@@ -47,20 +46,67 @@
             name="imageUrl"
             formControlName="imageUrl"
           />
+          <div formGroupName="powerstats">
+              <h6>Power stats</h6>
+              <label for="intelligence">Intelligence</label>
+              <input
+                class="form-control"
+                id="intelligence"
+                name="intelligence"
+                formControlName="intelligence"
+              />
+              <label for="strength">Strength</label>
+              <input
+                class="form-control"
+                id="strength"
+                name="strength"
+                formControlName="strength"
+              />
+              <label for="speed">Speed</label>
+              <input
+                class="form-control"
+                id="speed"
+                name="speed"
+                formControlName="speed"
+              />
+              <label for="durability">Durability</label>
+              <input
+                class="form-control"
+                id="durability"
+                name="durability"
+                formControlName="durability"
+              />
+              <label for="power">Power</label>
+              <input
+                class="form-control"
+                id="power"
+                name="power"
+                formControlName="power"
+              />
+              <label for="combat">Combat</label>
+              <input
+                class="form-control"
+                id="combat"
+                name="combat"
+                formControlName="combat"
+              />
+          </div>
+
         </div>
-        <button
-          [disabled]="!addHeroForm.valid"
-          (click)="saveHero()"
-          class="btn btn-success"
-          appOffline
-        >
-          Submit
-        </button>
+        <div>
+            <button
+                [disabled]="!addHeroForm.valid"
+                (click)="saveHero()"
+                class="btn btn-success"
+                appOffline>
+                Submit
+            </button>
+        </div>
+
       </div>
     </div>
     <div *ngIf="submitted">
       <h4>Hero was submitted successfully!</h4>
-      <button class="btn btn-success" (click)="newHero()">Add</button>
     </div>
     <div *ngIf="error" class="badge badge-danger">
       <h4>Hero was not submitted successfully!</h4>

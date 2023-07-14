@@ -1,0 +1,12 @@
+.inline-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1;
+  column-gap: 12rem;
+}
+
+.modal-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr;
+}

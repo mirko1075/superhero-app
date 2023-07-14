@@ -3,6 +3,9 @@
   flex-direction: row;
   justify-content: space-between;
   padding: 10px;
-  border: 1px solid;
-  border-style: outset;
+  border-top: 1px solid #ced4da;
+}
+
+.cursor-pointer{
+  cursor: pointer;
 }

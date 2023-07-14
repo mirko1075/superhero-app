@@ -17,10 +17,12 @@ export class AddHeroComponent implements OnInit {
 
   public submitted = false;
   public error: Error | undefined;
+  public heroes: Hero[] = []
 
   constructor(private route: ActivatedRoute, private heroesService: HeroesService) { }
 
   ngOnInit() {
+    this.retrieveHeroes();
     this.createform()
     this.route.params.subscribe(params => {
      this.id = params['id'];
@@ -41,6 +43,14 @@ export class AddHeroComponent implements OnInit {
       ]),
       description: new FormControl(this.hero?.description),
       imageUrl: new FormControl(this.hero?.imageUrl),
+      powerstats : new FormGroup({
+        intelligence: new FormControl(),
+        strength: new FormControl(),
+        speed: new FormControl(),
+        durability: new FormControl(),
+        power: new FormControl(),
+        combat: new FormControl(),
+      })
     });
 
   }
@@ -56,18 +66,24 @@ export class AddHeroComponent implements OnInit {
       if (!value) {
         return null;
       }
-      if (this.hero){
-           this.heroesService.get(this.hero?._id).subscribe({
-              next: (data) => {
-               const heroeFound = data;
-                const isNameDuplicated = heroeFound?.name === this.hero?.name
-                return !isNameDuplicated ? { nameDuplicatedErr: true } : null;
-              },
-              error: (e) => console.error(e),
-            });
-      }
-      return null;
+
+      const isNameUsed = !this.heroes.find(
+        (hero) => hero.name === control.value
+      );
+
+      return !isNameUsed ? { nameValidErr: true } : null;
     };
+  }
+
+  private retrieveHeroes(): void {
+    this.heroesService.getAll().subscribe({
+      next: (data) => {
+        this.heroes = data
+      },
+      error: (e) => {
+        console.error(e);
+      },
+    });
   }
 
   private retrieveHero(heroId:string): void {
@@ -81,20 +97,29 @@ export class AddHeroComponent implements OnInit {
   }
 
   public async saveHero(): Promise<void> {
-    this.heroesService.create(this.addHeroForm.value).subscribe({
-      next: (res) => {
-        this.submitted = true;
-      },
-      error: (e) => {
-        this.submitted = false;
-        this.error = e;
-        console.error(e);
-      },
-    });
-  }
-
-  public newHero(): void {
-    this.submitted = false;
-    this.createform()
+    if (this.hero?._id){
+      this.heroesService.update(this.hero?._id as string, this.addHeroForm.getRawValue()).subscribe({
+        next: (res) => {
+          this.submitted = true;
+        },
+        error: (e) => {
+          this.submitted = false;
+          this.error = e;
+          console.error(e);
+        },
+      });
+    }
+    else{
+      this.heroesService.create(this.addHeroForm.getRawValue()).subscribe({
+        next: (res) => {
+          this.submitted = true;
+        },
+        error: (e) => {
+          this.submitted = false;
+          this.error = e;
+          console.error(e);
+        },
+      });
+    }
   }
 }

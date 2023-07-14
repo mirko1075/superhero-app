@@ -8,6 +8,7 @@ const routes: Routes = [
   { path: "api/heroes", component: HeroesListComponent },
   { path: "api/heroes/add", component: AddHeroComponent },
   { path: "api/heroes/add/:id", component: AddHeroComponent },
+  { path: "api/heroes/:id", component: HeroDetailsComponent },
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

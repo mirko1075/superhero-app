@@ -7,9 +7,11 @@ import { AddHeroComponent } from './components/add-hero/add-hero.component';
 import { HeroDetailsComponent } from './components/hero-details/hero-details.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeroCardComponent } from './components/hero-card/hero-card.component';
-import { HttpClientModule, HttpClient } from "@angular/common/http";
+import { HttpClientModule, HttpClient, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { TruncatePipe } from './pipes/truncate.pipe';
+import { LoadingInterceptor } from './interceptors/loading.interceptor';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     AddHeroComponent,
     HeroDetailsComponent,
     NavbarComponent,
-    HeroCardComponent
+    HeroCardComponent,
+    ConfirmationModalComponent,
+    TruncatePipe
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ReactiveFormsModule,
   ],
-  providers: [HttpClient],
+  providers: [HttpClient,
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: LoadingInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
