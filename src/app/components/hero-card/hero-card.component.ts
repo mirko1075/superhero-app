@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Hero } from 'src/app/models/hero.model';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
+import { IconsService } from 'src/app/services/icons/icons.service';
 
 @Component({
   selector: 'app-hero-card',
@@ -13,10 +15,14 @@ export class HeroCardComponent {
   @Input() item: Hero | undefined;
   @Output() sendDeleteHero: EventEmitter<string> = new EventEmitter<string>();
 
+  public svgIcon: SafeHtml | undefined;
+
   constructor(
     private router: Router,
     private modalService: NgbModal,
-    private modalConfig: NgbModalConfig
+    private modalConfig: NgbModalConfig,
+    private sanitizer: DomSanitizer,
+    private iconService: IconsService
   ) {}
 
   public navigateToRoute(route: string): void {

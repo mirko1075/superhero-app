@@ -19,6 +19,7 @@ import { LoadingInterceptor } from './interceptors/loading.interceptor';
 import { LoadingComponent } from './components/loading/loading.component';
 import { UppercaseDirective } from './directives/uppercase.directive';
 import { SearchComponent } from './components/search/search.component';
+import { SvgIconComponent } from './components/svg-icon/svg-icon.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { SearchComponent } from './components/search/search.component';
     LoadingComponent,
     UppercaseDirective,
     SearchComponent,
+    SvgIconComponent,
   ],
   imports: [
     BrowserModule,

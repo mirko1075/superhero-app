@@ -1,9 +1,17 @@
 <div class="card" style="width: 15rem; margin: 5px">
-  <img
-    class="img-thumbnail cursor-pointer"
-    src="{{ item?.imageUrl }}"
-    alt="{{ item?.name }}"
-    (click)="navigateToRoute('/api/heroes/' + item?._id)" />
+  <div class="image-div">
+    <div *ngIf="!item?.imageUrl">
+      <app-svg-icon
+        class="div-empty-image"
+        [name]="'image-not-found-icon'"></app-svg-icon>
+    </div>
+    <img
+      *ngIf="item?.imageUrl"
+      class="img-thumbnail cursor-pointer"
+      src="{{ item?.imageUrl }}"
+      alt="{{ item?.name }}"
+      (click)="navigateToRoute('/api/heroes/' + item?._id)" />
+  </div>
   <div class="card-body">
     <h5 class="card-title">{{ item?.name }}</h5>
     <p class="card-text">{{ item?.description || '' | truncate }}</p>

@@ -2,7 +2,7 @@
   <app-loading *ngIf="isLoading"></app-loading>
   <div *ngIf="!isLoading" class="submit-form">
     <h4>{{ hero?._id ? 'Edit' : 'Add new' }} Hero</h4>
-    <div *ngIf="!submitted">
+    <div *ngIf="!isSubmitted">
       <div class="form-group">
         <div class="form-group">
           <label for="name">Name <span lass="danger">*</span></label>
@@ -98,5 +98,6 @@
         </div>
       </div>
     </div>
+    <div *ngIf="isSubmitted">Hero successfully created</div>
   </div>
 </div>

@@ -23,7 +23,7 @@ export class AddHeroComponent implements OnInit {
   public id: string | null = null;
   public hero: Hero | null = null;
 
-  public submitted = false;
+  public isSubmitted = false;
   public error: Error | undefined;
   public heroes: Hero[] = [];
   public isLoading = true;
@@ -119,11 +119,11 @@ export class AddHeroComponent implements OnInit {
         .update(this.hero?._id as string, this.addHeroForm.getRawValue())
         .subscribe({
           next: res => {
-            this.submitted = true;
+            this.isSubmitted = true;
             this.router.navigate(['/']);
           },
           error: e => {
-            this.submitted = false;
+            this.isSubmitted = false;
             this.error = e;
             console.error(e);
           },
@@ -131,10 +131,10 @@ export class AddHeroComponent implements OnInit {
     } else {
       this.heroesService.create(this.addHeroForm.getRawValue()).subscribe({
         next: res => {
-          this.submitted = true;
+          this.isSubmitted = true;
         },
         error: e => {
-          this.submitted = false;
+          this.isSubmitted = false;
           this.error = e;
           console.error(e);
         },
