@@ -1,27 +1,41 @@
-# SuperheroApp
+superhero-app
+A brief description of your application and its purpose.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.4.
+## Features
+Feature 1: Brief description of feature 1.
+Feature 2: Brief description of feature 2.
+Feature 3: Brief description of feature 3.
+## Prerequisites
+Angular CLI: 16.1.4
+Node: 16.16.0
+Package Manager: npm 8.11.0
+Angular CLI (version 16.1.4)
+## Installation
+Clone the repository: git clone https://github.com/mirko1075/superhero-app.git
+Navigate to the project directory: cd project-directory
+Install the dependencies: npm install
+## Usage
+Start the application: ng serve
+Open your browser and access http://localhost:4200
+## Configuration
+.ev: Must contain PORT  and MONGODB_URI constants
+Contribution
+Fork the repository.
+Create a new branch: git checkout -b branch-name
+Make changes and commit: git commit -m "Description of changes"
+Push the branch: git push origin branch-name
+Create a pull request on GitHub.
+## License
+Specify the license used for your application. For example:
 
-## Development server
+This project is licensed under the MIT License.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Contact
+Name: Mirko Siddi
+Email: mirko.siddi@gmail.com
+If you have any questions or inquiries, feel free to reach out.
 
-## Code scaffolding
+Acknowledgements
+Acknowledge any individuals or resources that have been helpful in the development of your application.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Thank you for using our application!
