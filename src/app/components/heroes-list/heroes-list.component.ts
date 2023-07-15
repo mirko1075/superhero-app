@@ -16,7 +16,7 @@ export class HeroesListComponent implements OnInit {
   public isLoading = true;
 
   constructor(
-    private heroesService: HeroesService,
+    public heroesService: HeroesService,
     private loadingService: LoadingService
   ) {}
 
@@ -27,7 +27,7 @@ export class HeroesListComponent implements OnInit {
     this.retrieveHeroes();
   }
 
-  private retrieveHeroes(options?: string): void {
+  public retrieveHeroes(options?: string): void {
     this.heroesService.getAll(options).subscribe({
       next: data => {
         this.heroes = data;
@@ -37,16 +37,6 @@ export class HeroesListComponent implements OnInit {
         this.isLoading = false;
       },
     });
-  }
-
-  public setActiveHero(hero: Hero, index: number): void {
-    if (this.currentHero._id === '') {
-      this.currentHero = hero;
-      this.currentIndex = index;
-    } else {
-      this.currentHero = new Hero('', '');
-      this.currentIndex = -1;
-    }
   }
 
   public deleteHero(heroId: string): void {

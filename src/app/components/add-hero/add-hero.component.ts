@@ -20,13 +20,13 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
 export class AddHeroComponent implements OnInit {
   public addHeroForm: FormGroup = new FormGroup({});
 
-  private id: string | null = null;
+  public id: string | null = null;
   public hero: Hero | null = null;
 
   public submitted = false;
   public error: Error | undefined;
   public heroes: Hero[] = [];
-  public isLoading: boolean = true;
+  public isLoading = true;
 
   constructor(
     private route: ActivatedRoute,
@@ -76,7 +76,7 @@ export class AddHeroComponent implements OnInit {
     if (this.hero) this.addHeroForm.patchValue(this.hero);
   }
 
-  private validateName(): ValidatorFn {
+  public validateName(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const value = control.value;
 
@@ -92,7 +92,7 @@ export class AddHeroComponent implements OnInit {
     };
   }
 
-  private retrieveHeroes(): void {
+  public retrieveHeroes(): void {
     this.heroesService.getAll().subscribe({
       next: data => {
         this.heroes = data;
@@ -103,7 +103,7 @@ export class AddHeroComponent implements OnInit {
     });
   }
 
-  private retrieveHero(heroId: string): void {
+  public retrieveHero(heroId: string): void {
     this.heroesService.get(heroId).subscribe({
       next: data => {
         this.hero = data;

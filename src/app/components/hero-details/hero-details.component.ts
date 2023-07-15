@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Hero } from 'src/app/models/hero.model';
 import { HeroesService } from 'src/app/services/heroes/heroes.service';
@@ -9,8 +9,8 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
   templateUrl: './hero-details.component.html',
   styleUrls: ['./hero-details.component.scss'],
 })
-export class HeroDetailsComponent {
-  private id: any;
+export class HeroDetailsComponent implements OnInit {
+  private id = '';
   public hero: Hero | null = null;
   public isLoading = false;
 
@@ -33,7 +33,7 @@ export class HeroDetailsComponent {
     });
   }
 
-  private retrieveHero(heroId: string): void {
+  public retrieveHero(heroId: string): void {
     this.heroesService.get(heroId).subscribe({
       next: data => {
         this.hero = data;

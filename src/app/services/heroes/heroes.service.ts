@@ -15,10 +15,10 @@ export class HeroesService {
 
   constructor(private http: HttpClient) {}
 
-  public getAll(searchString?: any): Observable<Hero[]> {
+  public getAll(searchString?: string): Observable<Hero[]> {
     let options = {};
     if (searchString) {
-      let filter = {
+      const filter = {
         $or: [
           { name: { $regex: searchString, $options: 'i' } },
           { description: { $regex: searchString, $options: 'i' } },
