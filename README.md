@@ -2,9 +2,11 @@ superhero-app
 A brief description of your application and its purpose.
 
 ## Features
-Feature 1: Brief description of feature 1.
-Feature 2: Brief description of feature 2.
-Feature 3: Brief description of feature 3.
+List Heroes: List of heroes
+Search Heroes: Search in List of heroes
+Add Hero: Add Hero.
+Modify Hero 3: Modify Hero.
+Delete Hero 3: Delete Hero.
 ## Prerequisites
 Angular CLI: 16.1.4
 Node: 16.16.0
