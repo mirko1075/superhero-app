@@ -9,10 +9,9 @@ import { IconsService } from 'src/app/services/icons/icons.service';
   styleUrls: ['./svg-icon.component.scss'],
 })
 export class SvgIconComponent implements OnChanges {
-  @Input()
-  public name?: string;
+  @Input() name?: string;
 
-  public svgIcon: any;
+  public svgIcon: unknown;
 
   constructor(
     private httpClient: HttpClient,

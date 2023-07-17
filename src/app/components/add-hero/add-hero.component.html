@@ -1,8 +1,8 @@
 <div [formGroup]="addHeroForm">
-  <app-loading *ngIf="isLoading"></app-loading>
-  <div *ngIf="!isLoading" class="submit-form">
-    <h4>{{ hero?._id ? 'Edit' : 'Add new' }} Hero</h4>
-    <div *ngIf="!isSubmitted">
+  <app-loading [hidden]="!isLoading"></app-loading>
+  <div [hidden]="isLoading" class="submit-form">
+    <h4>{{ id ? 'Edit' : 'Add new' }} Hero</h4>
+    <div [hidden]="isSubmitted">
       <div class="form-group">
         <div class="form-group">
           <label for="name">Name <span lass="danger">*</span></label>
@@ -41,12 +41,9 @@
             formControlName="description"
             rows="3">
           </textarea>
-          <label for="imageUrl">Image URL</label>
-          <input
-            class="form-control"
-            id="imageUrl"
-            name="imageUrl"
-            formControlName="imageUrl" />
+          <app-uploader
+            (sendImageName)="handleImageName($event)"></app-uploader>
+
           <div formGroupName="powerstats">
             <h6>Power stats</h6>
             <label for="intelligence">Intelligence</label>

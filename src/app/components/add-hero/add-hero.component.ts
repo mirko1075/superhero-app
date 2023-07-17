@@ -21,8 +21,8 @@ export class AddHeroComponent implements OnInit {
   public addHeroForm: FormGroup = new FormGroup({});
 
   public id: string | null = null;
-  public hero: Hero | null = null;
-
+  public hero: Hero = new Hero('', '');
+  public imageUrl = '';
   public isSubmitted = false;
   public error: Error | undefined;
   public heroes: Hero[] = [];
@@ -118,7 +118,7 @@ export class AddHeroComponent implements OnInit {
       this.heroesService
         .update(this.hero?._id as string, this.addHeroForm.getRawValue())
         .subscribe({
-          next: res => {
+          next: () => {
             this.isSubmitted = true;
             this.router.navigate(['/']);
           },
@@ -130,7 +130,7 @@ export class AddHeroComponent implements OnInit {
         });
     } else {
       this.heroesService.create(this.addHeroForm.getRawValue()).subscribe({
-        next: res => {
+        next: () => {
           this.isSubmitted = true;
         },
         error: e => {
@@ -140,5 +140,10 @@ export class AddHeroComponent implements OnInit {
         },
       });
     }
+  }
+
+  public handleImageName(imageUrl: string): void {
+    this.hero.imageUrl = imageUrl;
+    this.addHeroForm.controls['imageUrl'].setValue(imageUrl);
   }
 }

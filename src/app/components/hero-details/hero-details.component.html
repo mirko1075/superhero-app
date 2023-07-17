@@ -1,7 +1,10 @@
 <div class="container">
   <app-loading *ngIf="isLoading"></app-loading>
   <div *ngIf="!isLoading" class="card">
-    <img [src]="hero?.imageUrl" class="img-fluid" alt="{{ hero?.name }}" />
+    <img
+      [src]="remoteUrl + hero?.imageUrl"
+      class="img-fluid rounded mx-auto d-block"
+      alt="{{ hero?.name }}" />
     <div class="card-body">
       <h5 class="card-title">{{ hero?.name }}</h5>
       <p class="card-text">{{ hero?.description }}</p>

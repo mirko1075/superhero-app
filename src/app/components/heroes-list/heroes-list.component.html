@@ -1,11 +1,12 @@
 <div class="container">
   <app-search (search)="onSearch($event)"></app-search>
-  <div class="row">
-    <app-loading *ngIf="isLoading"></app-loading>
+  <app-loading *ngIf="isLoading"></app-loading>
+  <div class="row" *ngIf="heroes.length">
     <div class="col-sm-6" *ngFor="let hero of heroes">
       <app-hero-card
         [item]="hero"
         (sendDeleteHero)="deleteHero($event)"></app-hero-card>
     </div>
   </div>
+  <div class="no-items h3" *ngIf="!heroes.length">No heroes to show</div>
 </div>

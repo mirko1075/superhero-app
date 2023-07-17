@@ -8,7 +8,7 @@
     <img
       *ngIf="item?.imageUrl"
       class="img-thumbnail cursor-pointer"
-      src="{{ item?.imageUrl }}"
+      src="{{ remoteUrl + item?.imageUrl }}"
       alt="{{ item?.name }}"
       (click)="navigateToRoute('/api/heroes/' + item?._id)" />
   </div>

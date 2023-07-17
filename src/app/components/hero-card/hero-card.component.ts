@@ -16,6 +16,7 @@ export class HeroCardComponent {
   @Output() sendDeleteHero: EventEmitter<string> = new EventEmitter<string>();
 
   public svgIcon: SafeHtml | undefined;
+  public remoteUrl = 'http://localhost:3000';
 
   constructor(
     private router: Router,

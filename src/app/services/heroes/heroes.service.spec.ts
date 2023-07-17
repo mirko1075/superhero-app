@@ -67,7 +67,7 @@ describe('HeroesService', () => {
       // mock hero data
       _id: '111',
       name: 'Superman',
-      imageUrl: '',
+      imageName: '',
       description: 'Superman is a super hero',
     };
 
@@ -85,7 +85,7 @@ describe('HeroesService', () => {
       // mock hero object
       _id: '111',
       name: 'Superman',
-      imageUrl: '',
+      imageName: '',
       description: 'Superman is a super hero',
     };
     const heroId = '111';

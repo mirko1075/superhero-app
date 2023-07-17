@@ -36,7 +36,7 @@ export class HeroesService {
   public create(data: {
     _id: string;
     name: string;
-    imageUrl: string;
+    imageName: string;
     description: string;
   }): Observable<any> {
     return this.http
@@ -50,10 +50,10 @@ export class HeroesService {
       _id: string;
       name: string;
       description: string;
-      imageUrl: string;
+      imageName: string;
       powerstats?: PowerStats;
     }
-  ): Observable<any> {
+  ): Observable<unknown> {
     return this.http
       .put(`${this.baseUrl}/${id}`, data, this.httpOptions)
       .pipe(catchError(this.handleError<Hero>(`updateHero`)));
