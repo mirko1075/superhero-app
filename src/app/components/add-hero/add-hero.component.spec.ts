@@ -6,11 +6,15 @@ import { of, throwError } from 'rxjs';
 import { FormBuilder, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpErrorResponse } from '@angular/common/http';
+import { LoadingComponent } from '../loading/loading.component';
+import { UploaderComponent } from '../uploader/uploader.component';
+import { UploadService } from 'src/app/services/upload/upload.service';
 
 describe('AddHeroComponent', () => {
   let component: AddHeroComponent;
   let fixture: ComponentFixture<AddHeroComponent>;
   let mockHeroesService: jasmine.SpyObj<HeroesService>;
+  let mockUploadService: jasmine.SpyObj<UploadService>;
   const mockHeroes: Hero[] = [
     { _id: '1111', name: 'Mirko', description: 'Description 1' },
     { _id: '2222', name: 'Pablo', description: 'Description 2' },
@@ -27,10 +31,11 @@ describe('AddHeroComponent', () => {
 
     await TestBed.configureTestingModule({
       imports: [ReactiveFormsModule, RouterTestingModule],
-      declarations: [AddHeroComponent],
+      declarations: [AddHeroComponent, LoadingComponent, UploaderComponent],
       providers: [
         FormBuilder,
         { provide: HeroesService, useValue: mockHeroesService },
+        { provide: UploadService, useValue: mockUploadService },
       ],
     }).compileComponents();
   });
@@ -93,10 +98,10 @@ describe('AddHeroComponent', () => {
     await component.saveHero();
 
     expect(mockHeroesService.update).toHaveBeenCalledWith(
-      mockHero._id,
+      mockHero._id as string,
       component.addHeroForm.getRawValue()
     );
-    expect(component.submitted).toBe(true);
+    expect(component.isSubmitted).toBe(true);
   });
 
   it('should handle error while saving a hero', async () => {
@@ -116,7 +121,7 @@ describe('AddHeroComponent', () => {
     expect(mockHeroesService.create).toHaveBeenCalledWith(
       component.addHeroForm.getRawValue()
     );
-    expect(component.submitted).toBe(false);
+    expect(component.isSubmitted).toBe(false);
     expect(component.error).toBe(mockError);
   });
 });

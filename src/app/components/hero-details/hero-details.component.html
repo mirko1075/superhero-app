@@ -2,7 +2,7 @@
   <app-loading *ngIf="isLoading"></app-loading>
   <div *ngIf="!isLoading" class="card">
     <img
-      [src]="remoteUrl + hero?.imageUrl"
+      [src]="remoteUrl + hero?.imageName"
       class="img-fluid rounded mx-auto d-block"
       alt="{{ hero?.name }}" />
     <div class="card-body">

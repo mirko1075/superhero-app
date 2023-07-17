@@ -3,8 +3,8 @@ import { Router } from '@angular/router';
 import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { Hero } from 'src/app/models/hero.model';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
-import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 import { IconsService } from 'src/app/services/icons/icons.service';
+import { SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-hero-card',
@@ -16,13 +16,12 @@ export class HeroCardComponent {
   @Output() sendDeleteHero: EventEmitter<string> = new EventEmitter<string>();
 
   public svgIcon: SafeHtml | undefined;
-  public remoteUrl = 'http://localhost:3000';
+  public remoteUrl = 'http://localhost:3000/images/';
 
   constructor(
     private router: Router,
     private modalService: NgbModal,
     private modalConfig: NgbModalConfig,
-    private sanitizer: DomSanitizer,
     private iconService: IconsService
   ) {}
 
@@ -41,7 +40,7 @@ export class HeroCardComponent {
       this.modalConfig
     );
     modalRef.result
-      .then(async (result: any) => {
+      .then(async () => {
         this.deleteHero(heroId);
       })
       .catch(() => {

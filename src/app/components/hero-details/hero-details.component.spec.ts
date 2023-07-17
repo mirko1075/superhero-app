@@ -1,4 +1,9 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick,
+} from '@angular/core/testing';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
 import { of } from 'rxjs';
@@ -65,9 +70,9 @@ describe('HeroDetailsComponent', () => {
     expect(component.hero).toEqual(mockHero);
   });
 
-  it('should navigate back', () => {
+  it('should navigate back', fakeAsync(() => {
     component.navigateBack();
-
+    tick();
     expect(mockRouter.navigate).toHaveBeenCalledWith(['/']);
-  });
+  }));
 });

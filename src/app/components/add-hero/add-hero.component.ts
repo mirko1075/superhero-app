@@ -20,9 +20,9 @@ import { LoadingService } from 'src/app/services/loading/loading.service';
 export class AddHeroComponent implements OnInit {
   public addHeroForm: FormGroup = new FormGroup({});
 
-  public id: string | null = null;
-  public hero: Hero = new Hero('', '');
-  public imageUrl = '';
+  public id: string | null | undefined;
+  public hero: Hero | null = null;
+  public imageName = '';
   public isSubmitted = false;
   public error: Error | undefined;
   public heroes: Hero[] = [];
@@ -60,7 +60,7 @@ export class AddHeroComponent implements OnInit {
         this.validateName(),
       ]),
       description: new FormControl(this.hero?.description),
-      imageUrl: new FormControl(this.hero?.imageUrl),
+      imageName: new FormControl(this.hero?.imageName),
       powerstats: new FormGroup({
         intelligence: new FormControl(),
         strength: new FormControl(),
@@ -142,8 +142,7 @@ export class AddHeroComponent implements OnInit {
     }
   }
 
-  public handleImageName(imageUrl: string): void {
-    this.hero.imageUrl = imageUrl;
-    this.addHeroForm.controls['imageUrl'].setValue(imageUrl);
+  public handleImageName(imageName: string): void {
+    this.addHeroForm.controls['imageName'].setValue(imageName);
   }
 }

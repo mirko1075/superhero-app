@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Hero } from 'src/app/models/hero.model';
 import { HeroesService } from 'src/app/services/heroes/heroes.service';
@@ -14,10 +14,11 @@ export class HeroesListComponent implements OnInit {
   public currentHero: Hero = new Hero('', '');
   public currentIndex = -1;
   public isLoading = true;
-
+  @ViewChild('cardContainer', { static: true }) container!: ElementRef;
   constructor(
     public heroesService: HeroesService,
-    private loadingService: LoadingService
+    private loadingService: LoadingService,
+    private elementRef: ElementRef
   ) {}
 
   ngOnInit(): void {

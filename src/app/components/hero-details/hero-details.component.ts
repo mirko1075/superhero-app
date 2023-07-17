@@ -13,7 +13,7 @@ export class HeroDetailsComponent implements OnInit {
   private id = '';
   public hero: Hero | null = null;
   public isLoading = false;
-  public remoteUrl = 'http://localhost:3000';
+  public remoteUrl = 'http://localhost:3000/images/';
   constructor(
     private route: ActivatedRoute,
     private router: Router,

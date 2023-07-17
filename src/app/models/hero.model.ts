@@ -1,20 +1,20 @@
 export class Hero {
-  public _id?: string;
+  public _id?: string | undefined;
   public name: string;
   public description?: string;
-  public imageUrl?: string;
+  public imageName?: string;
   public powerstats?: PowerStats;
 
   constructor(
     name: string,
     description?: string,
-    imageUrl?: string,
+    imageName?: string,
     powerstats?: PowerStats
   ) {
     this.name = name;
     this.name = name;
     this.description = description;
-    this.imageUrl = imageUrl;
+    this.imageName = imageName;
     this.powerstats = powerstats;
   }
 }
